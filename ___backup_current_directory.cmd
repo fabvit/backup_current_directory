@@ -25,7 +25,7 @@ set hh=%%d
 set mi=%%e
 set ss=%%f
 )
-set NICE_DATE=%yyyy%-%mm%-%dd%_%hh%-%mi%-%ss%
+set NICE_DATE=%yyyy%-%mm%-%dd%_%hh%.%mi%.%ss%
 
 echo.
 echo.
@@ -42,7 +42,7 @@ echo.
 echo.
 
 :: eseguo lo zip del folder corrente e delòle sue sottocartelle
-"C:\Program Files\7-Zip\7z.exe" a -tzip "%LAST_PART_OF_FOLDER_NAME%_%NICE_DATE%.zip" -r "%FOLDER_NAME%\*.*" -x!*.zip
+"C:\Program Files\7-Zip\7z.exe" a -tzip "%FOLDER_NAME%\bak\%LAST_PART_OF_FOLDER_NAME%_%NICE_DATE%_backup.zip" -r "%FOLDER_NAME%\*.*" -x!*.zip
 
 echo.
 echo.
