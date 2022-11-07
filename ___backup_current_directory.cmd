@@ -4,6 +4,10 @@
 :: Backup of the Current Directory
 :: (C) Copyright 2000 - Fabio VITALE
 ::
+:: Uso: Copiare questo file batch nella directory che si intende zippare.
+::      Copiare il file doff.exe in una cartella presente nel PATH (es. C:\Windows\System32)
+::      Lanciare questo file batch dalla directory che si intende zippare.
+::
 
 :: imposto la directory corrente come il folder da backuppare
 set FOLDER_NAME=%CD%
