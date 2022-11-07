@@ -10,10 +10,10 @@
 ::
 
 :: imposto la directory corrente come il folder da backuppare
-set FOLDER_NAME=%CD%
+set FOLDER_TO_ZIP=%CD%
 
 :: estraggo solo il nome della cartella dal percorso completo
-for %%f in ("%FOLDER_NAME%") do set LAST_PART_OF_FOLDER_NAME=%%~nxf
+for %%f in ("%FOLDER_TO_ZIP%") do set FOLDER_NAME=%%~nxf
 
 :: formatto il timestamp corrente usando doff.exe 
 for /f "tokens=1-6 delims=/ " %%a in ('doff yyyy/mm/dd/hh/mi/ss') do (
@@ -27,22 +27,14 @@ set ss=%%f
 )
 set NICE_DATE=%yyyy%-%mm%-%dd%_%hh%.%mi%.%ss%
 
-echo.
-echo.
-echo.
-
 echo -------------------------------------------
-echo FOLDER_NAME.............: %FOLDER_NAME%
-echo LAST_PART_OF_FOLDER_NAME: %LAST_PART_OF_FOLDER_NAME%
-echo NICE_DATE...............: %NICE_DATE%
+echo FOLDER_TO_ZIP: %FOLDER_TO_ZIP%
+echo FOLDER_NAME..: %FOLDER_NAME%
+echo NICE_DATE....: %NICE_DATE%
 echo -------------------------------------------
-
-echo.
-echo.
-echo.
 
 :: eseguo lo zip del folder corrente e delòle sue sottocartelle
-"C:\Program Files\7-Zip\7z.exe" a -tzip "%FOLDER_NAME%\bak\%LAST_PART_OF_FOLDER_NAME%_%NICE_DATE%_backup.zip" -r "%FOLDER_NAME%\*.*" -x!*.zip
+"C:\Program Files\7-Zip\7z.exe" a -tzip "%FOLDER_TO_ZIP%\bak\%FOLDER_NAME%_%NICE_DATE%_backup.zip" -r "%FOLDER_TO_ZIP%\*.*" -x!*.zip
 
 echo.
 echo.
