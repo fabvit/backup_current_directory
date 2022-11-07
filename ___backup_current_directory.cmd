@@ -1,14 +1,17 @@
 @echo off
 
 ::
-:: Backup the Current Directory
+:: Backup of the Current Directory
 :: (C) Copyright 2000 - Fabio VITALE
 ::
 
+:: imposto la directory corrente come il folder da backuppare
 set FOLDER_NAME=%CD%
 
+:: estraggo solo il nome della cartella dal percorso completo
 for %%f in ("%FOLDER_NAME%") do set LAST_PART_OF_FOLDER_NAME=%%~nxf
 
+:: formatto il timestamp corrente usando doff.exe 
 for /f "tokens=1-6 delims=/ " %%a in ('doff yyyy/mm/dd/hh/mi/ss') do (
 set yyyy=%%a
 set mm=%%b
@@ -18,7 +21,6 @@ set hh=%%d
 set mi=%%e
 set ss=%%f
 )
-
 set NICE_DATE=%yyyy%-%mm%-%dd%_%hh%-%mi%-%ss%
 
 echo.
@@ -35,7 +37,8 @@ echo.
 echo.
 echo.
 
-"C:\Program Files\7-Zip\7z.exe" a -tzip "%LAST_PART_OF_FOLDER_NAME%_%NICE_DATE%.zip" "%FOLDER_NAME%\*.*"
+:: eseguo lo zip del folder corrente e delòle sue sottocartelle
+"C:\Program Files\7-Zip\7z.exe" a -tzip "%LAST_PART_OF_FOLDER_NAME%_%NICE_DATE%.zip" -r "%FOLDER_NAME%\*.*" -x!*.zip
 
 echo.
 echo.
