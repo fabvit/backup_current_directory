@@ -33,7 +33,7 @@ echo FOLDER_NAME..: %FOLDER_NAME%
 echo NICE_DATE....: %NICE_DATE%
 echo -------------------------------------------
 
-:: eseguo lo zip del folder corrente e delòle sue sottocartelle
+:: eseguo lo zip del folder corrente e delle sue sottocartelle
 "C:\Program Files\7-Zip\7z.exe" a -tzip "%FOLDER_TO_ZIP%\bak\%FOLDER_NAME%_%NICE_DATE%_backup.zip" -r "%FOLDER_TO_ZIP%\*.*" -x!*.zip
 
 echo.
